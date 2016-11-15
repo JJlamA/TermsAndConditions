@@ -3,7 +3,7 @@ var bot = new Discord.Client();
 
 bot.on("guildMemberAdd", (member) => {
     var guild = member.guild;
-    guild.channels.get(guild.id).sendMessage(member.user.username + " is waiting in #doormat!")
+    guild.channels.get(guild.id).sendMessage(member.user.username + " is waiting in #doormat!") //Change #doormat to your channel name
 });
 
 
@@ -32,7 +32,7 @@ bot.on("message", msg => {
 		        }
 		        else {
 		        	member.addRole(guild.roles.find(role => role.name == "Accepted Terms" ).id);
-		        	bot.channels.get(guild.channels.find(channel => channel.name == "general" ).id).sendMessage(member + " has just accepted the terms and conditions!"); //Same here
+		        	bot.channels.get(guild.channels.find(channel => channel.name == "general" ).id).sendMessage("Hey, @everyone! "member + " has just accepted the terms and conditions!"); //Same here
 		        	member.sendMessage("Thank you for accepting the terms and conditions! Be sure to follow the rules and be respectful!")
 		        	msg.delete()
 		        }
