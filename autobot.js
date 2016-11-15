@@ -16,14 +16,14 @@ bot.on("guildMemberUpdate", (oldMember, newMember) => {
 });
 
 // bot.on("guildMemberRemove", (guild, member) => {
-//     guild.channels.get(guild.id).sendMessage("Goodbye," + member + "... You will be missed!")
+//     guild.channels.get(guild.id).sendMessage("Goodbye," + member + "... You will be missed!") //This didn't work ;-;
 // });
 
 bot.on("message", msg => {
     var guild = msg.channel.guild;
     if (guild) {
 	    var member = guild.member(msg.author);
-	    if (msg.channel.id == (guild.channels.find(channel => channel.name == "doormat")).id) {
+	    if (msg.channel.id == (guild.channels.find(channel => channel.name == "doormat")).id) { //This can be changed to fit the channel you want
 	    	if (msg.content.toLowerCase().startsWith("accepted rules")) {
 		        if (member.roles.exists("name", "Accepted Terms")) {
 		        	msg.delete()
@@ -32,7 +32,7 @@ bot.on("message", msg => {
 		        }
 		        else {
 		        	member.addRole(guild.roles.find(role => role.name == "Accepted Terms" ).id);
-		        	bot.channels.get(guild.channels.find(channel => channel.name == "general" ).id).sendMessage(member + " has just accepted the terms and conditions!");
+		        	bot.channels.get(guild.channels.find(channel => channel.name == "general" ).id).sendMessage(member + " has just accepted the terms and conditions!"); //Same here
 		        	member.sendMessage("Thank you for accepting the terms and conditions! Be sure to follow the rules and be respectful!")
 		        	msg.delete()
 		        }
@@ -45,8 +45,8 @@ bot.on("message", msg => {
 });
 
 bot.on('ready', () => {
-  console.log('AutobotGD ready for action!');
+  console.log('Terms and Conditions Bot ready for action!');
   bot.user.setGame("Made by JJlamA");
 });
 
-bot.login("MjQ3Mzc3NTkxODYwODU0Nzg0.CwoT2w.E4V8znDmYJx9SSC9TF7FgdN0hW4");
+bot.login("Token here, dummy!");
